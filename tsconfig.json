@@ -20,6 +20,5 @@
     }
   },
   "include": ["src/**/*"],
-  "files": ["src/index.d.ts"],
   "exclude": ["node_modules", "dist"]
 }
