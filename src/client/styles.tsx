@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Message } from './App'
 
 export const AppStyle = styled.div`
   button,
@@ -9,29 +10,37 @@ export const AppStyle = styled.div`
   }
 `
 
+export const Debug = styled.div`
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 30% auto;
+  grid-gap: 10px;
+  height: 100px;
+  height: 250px;
+`
+
 export const MessageList = styled.ul`
   border: 2px solid black;
   list-style: none;
   padding: 0;
   margin: 0;
 
-  li {
-    padding: 10px 5px 10px 5px;
-    border: 1px solid black;
-  }
-
-  li::before {
-    content: "server | ";
-    color: green;
-  }
+  overflow: scroll;
 `
 
-export const Debug = styled.div`
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: 30% auto;
-  grid-gap: 10px;
-  min-height: 300px;
+export const MessageItem = styled.li`
+  padding: 10px 5px 10px 5px;
+  border-bottom: 1px solid black;
+
+  span {
+    color: green;
+  }
+
+  span::after {
+    margin: 0 5px 0 5px;
+    border-right: 1px solid black;
+    content: '';
+  }
 `
 
 export const MessageForm = styled.form`

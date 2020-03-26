@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon --watch src/server.ts -x ts-node src/server.ts --delay 2",
+    "server": "nodemon --watch src/server.ts -x ts-node src/server.ts --delay 2 --signal SIGTERM",
     "watch": "webpack -w --color --hot",
     "start": "concurrently -s -n server,watch -c blue,green 'npm:server' 'npm:watch'"
   },
@@ -17,6 +17,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "styled-components": "^5.0.1",
+    "uuid": "^7.0.2",
     "ws": "^7.2.3"
   },
   "devDependencies": {
@@ -27,6 +28,7 @@
     "@types/express": "^4.17.3",
     "@types/node": "^12.12.31",
     "@types/styled-components": "^5.0.1",
+    "@types/uuid": "^7.0.2",
     "@types/webpack-dev-middleware": "^3.7.0",
     "@types/webpack-env": "^1.15.1",
     "@types/webpack-hot-middleware": "^2.25.0",
