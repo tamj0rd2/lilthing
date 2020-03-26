@@ -1,13 +1,16 @@
 import express from 'express'
 import WebSocket from 'ws'
 import path from 'path'
+import { getMiddlewares as getWebpackMiddlewares } from './webpack'
 
 const app = express()
 const port = 8080
 
 app.use('/static', express.static('dist'))
+getWebpackMiddlewares().forEach(middleware => app.use(middleware))
+
 app.get('/', (req, res) => res.sendFile(path.resolve(__dirname, 'index.html')))
-const server = app.listen(8080, () => console.log(`Listening on http://localhost:${port}`))
+const server = app.listen(port, () => console.log(`Listening on http://localhost:${port}`))
 
 const wss = new WebSocket.Server({ server })
 wss.on('listening', function () {
