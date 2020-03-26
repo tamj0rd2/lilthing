@@ -6,6 +6,7 @@ import webpackHotMiddleware from 'webpack-hot-middleware'
 const webpackConfig: webpack.Configuration = {
   entry: ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000', './src/client'],
   mode: 'development',
+  devtool: 'inline-source-map',
   output: {
     filename: 'client.bundle.js',
     path: path.resolve(__dirname, 'dist'),

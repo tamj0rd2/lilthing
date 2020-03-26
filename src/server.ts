@@ -19,13 +19,18 @@ wss.on('listening', function () {
 
 let connectionID = 0
 wss.on('connection', function connection(ws) {
-  connectionID++
+  const userId = connectionID++
 
   ws.on('message', function incoming(message) {
     console.log('received: %s', message)
   })
 
-  const res = { info: `You're connected with ID ${connectionID} :D` }
+  ws.on('close', function close(code, reason) {
+    console.log(`User ${userId} disconnected`)
+    console.dir({ code, reason })
+  })
+
+  const res = { info: `You're connected with ID ${userId} :D` }
   ws.send(JSON.stringify(res))
 })
 

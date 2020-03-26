@@ -6,5 +6,5 @@ const reactRoot = document.getElementById('root')
 ReactDOM.render(<App />, reactRoot)
 
 if (module.hot) {
-  module.hot.accept('./App', () => ReactDOM.render(<App />, reactRoot))
+  module.hot.accept(['./App', './index'], () => ReactDOM.render(<App />, reactRoot))
 }
