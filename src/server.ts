@@ -2,6 +2,7 @@ import express from 'express'
 import WebSocket from 'ws'
 import path from 'path'
 import { getMiddlewares as getWebpackMiddlewares } from './webpack'
+import { Message } from '~client/App'
 
 const app = express()
 const port = 8080
@@ -30,7 +31,7 @@ wss.on('connection', function connection(ws) {
     console.dir({ code, reason })
   })
 
-  const res = { info: `You're connected with ID ${userId} :D` }
+  const res: Message = { info: `You're connected with ID ${userId} :D` }
   ws.send(JSON.stringify(res))
 })
 
