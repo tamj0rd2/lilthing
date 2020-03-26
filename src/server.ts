@@ -1,10 +1,11 @@
 import express from 'express'
 import WebSocket from 'ws'
+import path from 'path'
 
 const app = express()
 const port = 8080
 
-app.get('/', (req, res) => res.send('Hello, world :D'))
+app.get('/', (req, res) => res.sendFile(path.resolve(__dirname, 'index.html')))
 const server = app.listen(8080, () => console.log(`Listening on http://localhost:${port}`))
 
 const wss = new WebSocket.Server({ server })
