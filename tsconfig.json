@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["esnext"],
+    "lib": ["ESNext", "DOM"],
+    "jsx": "preserve",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "rootDir": "./src",
