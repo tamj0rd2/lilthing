@@ -1,8 +1,15 @@
+import express from 'express'
 import WebSocket from 'ws'
 
-const wss = new WebSocket.Server({ port: 8080 })
+const app = express()
+const port = 8080
+
+app.get('/', (req, res) => res.send('Hello, world :D'))
+const server = app.listen(8080, () => console.log(`Listening on http://localhost:${port}`))
+
+const wss = new WebSocket.Server({ server })
 wss.on('listening', function () {
-  console.log('Listening on ws://localhost:8080')
+  console.log(`Listening on ws://localhost:${port}`)
 })
 
 let connectionID = 0
@@ -19,14 +26,4 @@ wss.on('connection', function connection(ws) {
 
 wss.on('close', function closing() {
   console.log('Bye 👋')
-})
-
-process.on('SIGINT', (sig) => {
-  console.log()
-  wss.close((err) => {
-    if (!err) process.exit(0)
-
-    console.log(err.stack)
-    process.exit(1)
-  })
 })
